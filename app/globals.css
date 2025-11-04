@@ -2,6 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-bleu-profond: #0A1D35;
+  --color-ivoire: #F2E8DC;
+  --color-bleu-clair: #6CAED6;
+  --color-champagne: #D9C9B4;
+  --color-bleu-diamant: #D0E7F5;
+
+  --font-family-montserrat: var(--font-montserrat);
+  --font-family-poppins: var(--font-poppins);
+}
+
+@utility bg-bleu-profond {
+  background-color: var(--color-bleu-profond);
+}
+
+@utility bg-ivoire {
+  background-color: var(--color-ivoire);
+}
+
+@utility bg-bleu-clair {
+  background-color: var(--color-bleu-clair);
+}
+
+@utility bg-champagne {
+  background-color: var(--color-champagne);
+}
+
+@utility bg-bleu-diamant {
+  background-color: var(--color-bleu-diamant);
+}
+
+@utility text-bleu-profond {
+  color: var(--color-bleu-profond);
+}
+
+@utility text-ivoire {
+  color: var(--color-ivoire);
+}
+
+@utility text-bleu-clair {
+  color: var(--color-bleu-clair);
+}
+
+@utility font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
 
 /* Variables globales */
 :root {
@@ -58,4 +103,13 @@ body {
 .input:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-text);
+}
+
+@utility font-poppins {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+body {
+  color: var(--color-bleu-profond);
+  background: var(--color-ivoire);
 }
