@@ -23,7 +23,7 @@ export default function Header() {
           </li>
           <li>
             <Link href="/insta-Account" className="hover:text-[var(--color-bg-light)] transition">
-              Instagramm
+              Instagram
             </Link>
           </li>
           <li>
