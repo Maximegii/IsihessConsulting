@@ -1,34 +1,32 @@
-import type { Metadata } from "next";
-import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-const montserrat = Montserrat({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-montserrat",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Isihess Consulting",
-  description: "Isihess Consulting",
+  title: "Ultimate Melik | Synego",
+  description: "Révélez votre potentiel, cultivez votre bien-être.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className={`${montserrat.variable} ${poppins.variable} font-poppins antialiased`}>
-        {children}
+    <html lang="fr" className={outfit.variable}>
+      <body
+        className="min-h-screen flex flex-col font-[var(--font-outfit)] bg-[var(--color-bg)] text-[var(--color-text)]"
+      >
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
 }
+//.
