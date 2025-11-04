@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme {
   --color-bleu-profond: #0A1D35;
@@ -45,6 +47,62 @@
 
 @utility font-montserrat {
   font-family: var(--font-montserrat), sans-serif;
+
+/* Variables globales */
+:root {
+  --color-bg: #d9c9b4;
+  --color-bg-light: #f2e8dc;
+  --color-text: #0a1d35;
+  --color-accent: #a9c5dc;
+}
+
+/* Styles globaux */
+body {
+  font-family: var(--font-outfit), sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Composants personnalisés */
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg-light);
+}
+
+.card {
+  background-color: var(--color-bg-light);
+  border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-text) 30%, transparent);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: color-mix(in srgb, var(--color-bg) 30%, transparent);
+  transition: all 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-text);
 }
 
 @utility font-poppins {

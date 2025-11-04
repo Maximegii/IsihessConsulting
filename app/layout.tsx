@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -19,11 +23,7 @@ export const metadata: Metadata = {
   description: "Isihess Consulting",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${montserrat.variable} ${poppins.variable} font-poppins antialiased`}>
