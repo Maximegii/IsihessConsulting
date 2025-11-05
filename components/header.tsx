@@ -17,6 +17,16 @@ export default function Header() {
 
         <ul className="flex gap-6 text-[var(--color-accent)] font-medium">
           <li>
+            <Link href="/services" className="hover:text-[var(--color-bg-light)] transition">
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link href="/calendrier" className="hover:text-[var(--color-bg-light)] transition">
+              Rendez-vous
+            </Link>
+          </li>
+          <li>
             <Link href="/blog" className="hover:text-[var(--color-bg-light)] transition">
               Blog
             </Link>

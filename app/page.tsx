@@ -23,7 +23,7 @@ export default function HomePage() {
         </p>
         <motion.div whileHover={{ scale: 1.05 }}>
           <Link
-            href="#contact"
+            href="/calendrier"
             className="inline-block bg-[#0A1D35] text-[#F2E8DC] px-8 py-3 rounded-full font-semibold shadow-md hover:bg-[#112a4f] transition"
           >
             Prendre rendez-vous
@@ -126,7 +126,7 @@ export default function HomePage() {
           Contactez-moi pour planifier un premier échange ou une séance découverte.
         </p>
         <Link
-          href="mailto:contact@ultimate-melik.com"
+          href="/contact"
           className="inline-block bg-[#F2E8DC] text-[#0A1D35] px-6 py-3 rounded-full font-semibold hover:bg-[#D9C9B4] transition"
         >
           Me contacter
