@@ -33,10 +33,9 @@ export default function ServicesTherapies() {
 
                     <div className="grid md:grid-cols-2 gap-8">
                         <ServiceCard
-                            title="Pack de 10 séances"
+                            title="Accompagnement personnalisé"
                             description="Un accompagnement personnalisé sur-mesure pour atteindre vos objectifs personnels et professionnels. Tarif communiqué lors de la prise de contact."
                             details={[
-                                "10 séances d'accompagnement individuel",
                                 "Suivi personnalisé",
                                 "Flexibilité dans la planification",
                                 "Prise de contact téléphonique préalable",
