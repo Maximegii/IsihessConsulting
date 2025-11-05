@@ -12,7 +12,7 @@ export default function Header() {
     >
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         <Link href="/" className="text-2xl font-bold tracking-tight">
-          Ultimate Melik
+          Synego
         </Link>
 
         <ul className="flex gap-6 text-[var(--color-accent)] font-medium">
