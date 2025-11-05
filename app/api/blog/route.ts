@@ -25,3 +25,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { id } = await req.json();
+    if (!id) return NextResponse.json({ success: false, error: 'Missing id' }, { status: 400 });
+    const data = await fs.readFile(DATA_PATH, "utf-8");
+    let articles = JSON.parse(data);
+    const initialLength = articles.length;
+    articles = articles.filter((a: { id: number }) => a.id !== id);
+    if (articles.length === initialLength) {
+      return NextResponse.json({ success: false, error: 'Article not found' }, { status: 404 });
+    }
+    await fs.writeFile(DATA_PATH, JSON.stringify(articles, null, 2), "utf-8");
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
+  }
+}
