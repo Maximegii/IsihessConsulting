@@ -34,13 +34,13 @@ export default function ServicesTherapies() {
                     <div className="grid md:grid-cols-2 gap-8">
                         <ServiceCard
                             title="Pack de 10 séances"
-                            description="Un accompagnement personnalisé sur-mesure pour atteindre vos objectifs personnels et professionnels"
-                            price="2 000€ le pack complet"
+                            description="Un accompagnement personnalisé sur-mesure pour atteindre vos objectifs personnels et professionnels. Tarif communiqué lors de la prise de contact."
                             details={[
                                 "10 séances d'accompagnement individuel",
                                 "Suivi personnalisé",
                                 "Flexibilité dans la planification",
-                                "Prise de contact téléphonique préalable"
+                                "Prise de contact téléphonique préalable",
+                                "Tarif discuté selon vos besoins"
                             ]}
                             ctaText="Prendre rendez-vous"
                             ctaLink='/contact?type=individuel'
@@ -69,11 +69,11 @@ export default function ServicesTherapies() {
                                 "Ambiance conviviale et bienveillante"
                             ]}
                             ctaText="S'inscrire"
-                            ctaLink='/contact?type=particulier'
+                            ctaLink='/contact?type=groupe'
                             variant="secondary"
                         />
 
-                        <ContactForm type="particulier" />
+                        <ContactForm type="groupe" />
                     </div>
                 </section>
 
@@ -86,15 +86,15 @@ export default function ServicesTherapies() {
                     <div className="grid md:grid-cols-2 gap-8">
                         <ServiceCard
                             title="Séminaires sur mesure"
-                            description="Des programmes adaptés aux besoins spécifiques de votre entreprise"
-                            price="Sur devis"
+                            description="Des programmes adaptés aux besoins spécifiques de votre entreprise. Devis personnalisé établi après étude de vos besoins."
                             details={[
                                 "Séance de découverte de soi",
                                 "Confiance et estime de soi",
                                 "Leadership d'équipe",
                                 "Exploration de soi (MBTI)",
                                 "Voyage vers soi (Ennéagramme)",
-                                "Adaptabilité selon vos besoins"
+                                "Adaptabilité selon vos besoins",
+                                "Tarif sur devis après entretien"
                             ]}
                             ctaText="Demander un devis"
                             ctaLink="/contact?type=entreprise"
@@ -129,7 +129,6 @@ export default function ServicesTherapies() {
                     </div>
                 </section>
             </main>
-
         </div>
     );
 }
