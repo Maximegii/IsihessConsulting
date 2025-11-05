@@ -12,7 +12,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Ultimate Melik | Synego",
+  title: "Synego",
   description: "Révélez votre potentiel, cultivez votre bien-être.",
 };
 

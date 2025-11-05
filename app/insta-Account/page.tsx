@@ -6,7 +6,7 @@ export default function Home() {
             {/* Header */}
             <header className="bg-bleu-profond text-ivoire py-6 px-8">
                 <h1 className="text-4xl font-montserrat font-bold">
-                    Isihess Consulting
+                    Synego
                 </h1>
             </header>
 
@@ -28,12 +28,6 @@ export default function Home() {
                 </section>
             </main>
 
-            {/* Footer */}
-            <footer className="bg-bleu-profond text-ivoire py-8 mt-16">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <p className="font-poppins">© 2025 Isihess Consulting. Tous droits réservés.</p>
-                </div>
-            </footer>
         </div>
     );
 }

@@ -12,10 +12,20 @@ export default function Header() {
     >
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         <Link href="/" className="text-2xl font-bold tracking-tight">
-          Ultimate Melik
+          Synego
         </Link>
 
         <ul className="flex gap-6 text-[var(--color-accent)] font-medium">
+          <li>
+            <Link href="/services" className="hover:text-[var(--color-bg-light)] transition">
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link href="/calendrier" className="hover:text-[var(--color-bg-light)] transition">
+              Rendez-vous
+            </Link>
+          </li>
           <li>
             <Link href="/blog" className="hover:text-[var(--color-bg-light)] transition">
               Blog
@@ -24,6 +34,11 @@ export default function Header() {
           <li>
             <Link href="/insta-Account" className="hover:text-[var(--color-bg-light)] transition">
               Instagram
+            </Link>
+          </li>
+          <li>
+            <Link href="/entreprise" className="hover:text-[var(--color-bg-light)] transition">
+              Entreprise
             </Link>
           </li>
           <li>
