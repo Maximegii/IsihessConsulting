@@ -78,7 +78,7 @@ export default function BlogPage() {
           className="text-3xl font-bold tracking-tight"
           whileHover={{ scale: 1.02 }}
         >
-          Ultimate Melik
+          Synego
         </motion.h1>
         <p className="text-[#a9c5dc] mt-1">
           Chez Synego, révélez votre potentiel, cultivez votre bien-être.
@@ -153,7 +153,7 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            ✍️ Rédiger un nouvel article
+             Rédiger un nouvel article
           </motion.h2>
 
           <div className="space-y-4">
