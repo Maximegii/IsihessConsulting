@@ -23,7 +23,7 @@ export default function HomePage() {
         </p>
         <motion.div whileHover={{ scale: 1.05 }}>
           <Link
-            href="/calendrier"
+            href="/contact"
             className="inline-block bg-[#0A1D35] text-[#F2E8DC] px-8 py-3 rounded-full font-semibold shadow-md hover:bg-[#112a4f] transition"
           >
             Prendre rendez-vous
