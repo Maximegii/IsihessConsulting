@@ -19,7 +19,7 @@ export default function HomePage() {
           Être soi, c’est non négociable.
         </motion.h2>
         <p className="text-lg md:text-xl text-[#0A1D35]/80 max-w-2xl mx-auto mb-8">
-          Coaching individuel et collectif pour libérer votre potentiel, renforcer votre leadership et retrouver un équilibre durable.
+          Accompagnement sur mesure pour professionnels en quête d’équilibre.
         </p>
         <motion.div whileHover={{ scale: 1.05 }}>
           <Link
@@ -63,12 +63,16 @@ export default function HomePage() {
 
       {/* SERVICES SECTION */}
       <section id="services" className="bg-[#F2E8DC] py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center mb-12">
+        <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }} 
+        className="max-w-7xl mx-auto text-center mb-12">
           <h3 className="text-3xl font-bold mb-4">Mes accompagnements</h3>
           <p className="text-[#0A1D35]/70 max-w-2xl mx-auto">
             Que ce soit en entreprise ou à titre personnel, découvrez les axes d’accompagnement que je propose pour favoriser la croissance, la sérénité et la performance.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {[
@@ -108,7 +112,67 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      {/* Pourquoi SECTION */}
+      <section id="pourquoi" className="bg-[#0A1D35] text-[#F2E8DC]">
+          <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto text-center py-20 px-4">
+          <h3 className="text-3xl font-bold mb-4">Pourquoi choisir cet accompagnement ?</h3>
+          <p className="/70 max-w-2xl mx-auto">
+            En tant que professionnel, vous jonglez avec des responsabilités exigeantes et des attentes élevées. Le stress, le surmenage ou le sentiment d’isolement peuvent freiner votre épanouissement et vos performances. Mon accompagnement thérapeutique est conçu pour répondre à vos besoins spécifiques. Grâce à des outils comme la thérapie cognitivo-comportementale, la gestion du stress et le coaching orienté solutions, je vous aide à clarifier vos priorités, à surmonter les blocages et à développer une résilience durable. Dans un cadre bienveillant et confidentiel, nous construisons ensemble des stratégies concrètes pour allier bien-être personnel et succès professionnel. Prenez rendez-vous pour commencer ce chemin vers l’équilibre.
+          </p>
+        </motion.div>
+      </section>
 
+      {/* Vous n'etes pas seul SECTION */}
+      <section id="veps" className="bg-[#D0E7F5] text-[#F2E8DC] p-9">
+      <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+       className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+      {/* Témoignage 1 */}
+      <div className="flex flex-col items-center text-center bg-[#D0E7F5] p-6 rounded-2xl">
+        <span className="block text-[12rem] leading-none text-[#0A1D35]">“</span>
+        <p className="text-lg text-[#0A1D35]/90 mb-6 leading-relaxed max-w-sm">
+          Après un burn-out, cet accompagnement m’a redonné énergie et clarté.
+          Les séances m’ont permis de surmonter mes blocages et de relancer mon
+          activité.
+        </p>
+        <p className="font-semibold text-[#0A1D35] text-lg">
+          Julien, <span className="font-bold">Entrepreneur</span>
+        </p>
+      </div>
+
+      {/* Témoignage 2 */}
+      <div className="flex flex-col items-center text-center bg-[#D0E7F5] p-6 rounded-2xl">
+        <span className="block text-[12rem] leading-none text-[#0A1D35]">“</span>
+        <p className="text-lg text-[#0A1D35]/90 mb-6 leading-relaxed max-w-sm">
+          Submergée par le stress, j’ai retrouvé sérénité et confiance grâce à un
+          accompagnement personnalisé. Les outils proposés m’ont aidée à mieux
+          gérer ma vie pro.
+        </p>
+        <p className="font-semibold text-[#0A1D35] text-lg">
+          Claire, <span className="font-bold">Responsable Marketing</span>
+        </p>
+      </div>
+
+      {/* Témoignage 3 */}
+      <div className="flex flex-col items-center text-center bg-[#D0E7F5] p-9 rounded-2xl">
+        <span className="block text-[12rem] leading-none text-[#0A1D35]">“</span>
+        <p className="text-lg text-[#0A1D35]/90 mb-4 leading-relaxed max-w-sm">
+          Les séances m’ont aidée à gérer la pression et à trouver un meilleur
+          équilibre pro-perso. Grâce à des outils pratiques, je suis plus
+          confiante et efficace.
+        </p>
+        <p className="font-semibold text-[#0A1D35] text-lg">
+          Sophie, <span className="font-bold">Directrice RH</span>
+        </p>
+      </div>
+    </motion.div>
+      </section>
       {/* FOOTER CTA */}
       <footer
         id="contact"
