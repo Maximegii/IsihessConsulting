@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Montserrat, Poppins } from "next/font/google";
+import Link from "next/link";
 
 
 const montserrat = Montserrat({
@@ -80,6 +81,12 @@ export default function ContactPage() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+          <Link
+            href="/services"
+            className="inline-block bg-[#0A1D35] text-[#F2E8DC] px-8 py-3 rounded-full font-semibold shadow-md hover:bg-[#112a4f] transition"
+          >
+            Reserver un rendez-vous
+          </Link>
         </div>
       </main>
     </div>
