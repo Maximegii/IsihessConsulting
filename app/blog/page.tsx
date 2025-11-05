@@ -1,5 +1,11 @@
 "use client";
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import "react-quill-new/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 type Article = {
   id: number;
@@ -17,13 +23,13 @@ export default function BlogPage() {
 
   useEffect(() => {
     fetch("/api/blog")
-      .then(res => res.json())
-      .then(data => setArticles(data));
+      .then((res) => res.json())
+      .then((data) => setArticles(data));
   }, []);
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setForm(f => ({ ...f, [name]: value }));
+    setForm((f) => ({ ...f, [name]: value }));
   }
 
   function handleImage(e: ChangeEvent<HTMLInputElement>) {
@@ -31,7 +37,7 @@ export default function BlogPage() {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = () => {
-      setForm(f => ({ ...f, image: reader.result as string }));
+      setForm((f) => ({ ...f, image: reader.result as string }));
       setImagePreview(reader.result as string);
     };
     reader.readAsDataURL(file);
@@ -45,12 +51,12 @@ export default function BlogPage() {
       content: form.content,
       author: form.author,
       date: new Date().toLocaleDateString(),
-      image: form.image
+      image: form.image,
     };
     const res = await fetch("/api/blog", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newArticle)
+      body: JSON.stringify(newArticle),
     });
     if (res.ok) {
       setArticles([newArticle, ...articles]);
@@ -59,98 +65,161 @@ export default function BlogPage() {
     }
   }
 
-  
-  const colors = {
-    bleuProfond: "#0A1D35",
-    ivoire: "#F2E8DC",
-    bleuClair: "#6CAED6",
-    champagne: "#D9C9B4",
-    bleuDiamant: "#D0E7F5"
-  };
-
   return (
-    <main style={{
-      fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-      background: colors.bleuDiamant,
-      minHeight: '100vh',
-      margin: 0,
-      padding: 0,
-    }}>
-      <header style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-        background: colors.bleuProfond,
-        color: colors.ivoire,
-        boxShadow: '0 2px 8px rgba(10,29,53,0.10)',
-        padding: '1.5rem 0 1rem 0',
-        textAlign: 'center',
-        letterSpacing: 2,
-      }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 800, margin: 0 }}>Blog Isihess Consulting</h1>
-        <p style={{ color: colors.bleuClair, fontSize: '1.1rem', fontWeight: 500, margin: 0 }}>Retrouvez ici nos derniers articles et conseils !</p>
-      </header>
-      <section style={{
-        maxWidth: 900,
-        margin: '2rem auto',
-        padding: '0 1rem',
-      }}>
-        <form onSubmit={handleSubmit} style={{
-          marginBottom: '2.5rem',
-          background: colors.champagne,
-          borderRadius: 16,
-          padding: '2rem',
-          boxShadow: '0 2px 12px rgba(10,29,53,0.08)',
-          border: `1px solid ${colors.bleuProfond}`,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-        }}>
-          <h2 style={{ color: colors.bleuProfond, fontSize: '1.3rem', fontWeight: 700 }}>Écrire un nouvel article</h2>
-          <input name="title" value={form.title} onChange={handleChange} placeholder="Titre" required style={{ padding: 12, borderRadius: 8, border: `1px solid ${colors.bleuClair}`, fontSize: '1rem', background: colors.ivoire }} />
-          <textarea name="content" value={form.content} onChange={handleChange} placeholder="Contenu" required rows={4} style={{ padding: 12, borderRadius: 8, border: `1px solid ${colors.bleuClair}`, fontSize: '1rem', background: colors.ivoire }} />
-          <input name="author" value={form.author} onChange={handleChange} placeholder="Auteur" required style={{ padding: 12, borderRadius: 8, border: `1px solid ${colors.bleuClair}`, fontSize: '1rem', background: colors.ivoire }} />
-          <input type="file" accept="image/*" onChange={handleImage} style={{ marginBottom: 8 }} />
-          {imagePreview && <img src={imagePreview} alt="Aperçu" style={{ maxWidth: 220, marginBottom: 8, borderRadius: 12, boxShadow: `0 2px 8px ${colors.bleuProfond}` }} />}
-          <button type="submit" style={{
-            background: colors.bleuProfond,
-            color: colors.ivoire,
-            padding: '0.9rem 2rem',
-            border: 'none',
-            borderRadius: 10,
-            fontWeight: 700,
-            fontSize: '1.1rem',
-            cursor: 'pointer',
-            boxShadow: `0 2px 8px ${colors.bleuClair}`,
-            transition: 'background 0.2s',
-          }}>Publier</button>
-        </form>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem',
-        }}>
-          {articles.map(article => (
-            <article key={article.id} style={{
-              background: colors.ivoire,
-              borderRadius: 18,
-              boxShadow: '0 4px 16px rgba(10,29,53,0.10)',
-              border: `1px solid ${colors.champagne}`,
-              padding: '2rem 1.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              transition: 'transform 0.2s',
-            }}>
-              <h2 style={{ color: colors.bleuProfond, fontSize: '1.5rem', marginBottom: 8, fontWeight: 700, textAlign: 'center' }}>{article.title}</h2>
-              <div style={{ fontSize: '0.95rem', color: colors.bleuClair, marginBottom: 12, fontWeight: 500 }}>
-                Par <span style={{ fontWeight: 700 }}>{article.author}</span> le {article.date}
-              </div>
-              {article.image && <img src={article.image} alt={article.title} style={{ maxWidth: 300, marginBottom: 12, borderRadius: 14, boxShadow: `0 2px 12px ${colors.bleuProfond}` }} />}
-              <p style={{ color: colors.bleuProfond, lineHeight: 1.7, fontSize: '1.05rem', textAlign: 'center', background: colors.bleuDiamant, borderRadius: 10, padding: '1rem 1.5rem', boxShadow: `0 2px 8px ${colors.champagne}` }}>{article.content}</p>
-            </article>
+    <main className="min-h-screen bg-[#d9c9b4] text-[#0a1d35] font-[var(--font-outfit)] overflow-hidden">
+      {/* Header animé */}
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="sticky top-0 z-20 bg-[#0a1d35] text-[#f2e8dc] py-6 shadow-md text-center"
+      >
+        <motion.h1
+          className="text-3xl font-bold tracking-tight"
+          whileHover={{ scale: 1.02 }}
+        >
+          Ultimate Melik
+        </motion.h1>
+        <p className="text-[#a9c5dc] mt-1">
+          Chez Synego, révélez votre potentiel, cultivez votre bien-être.
+        </p>
+      </motion.header>
+
+      {/* Liste des articles */}
+      <section className="max-w-6xl mx-auto px-6 py-12 space-y-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.1 }}
+          variants={{
+            hidden: {},
+            visible: {},
+          }}
+          className="grid md:grid-cols-3 gap-10"
+        >
+          {articles.map((article, index) => (
+            <motion.div
+              key={article.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Link
+                href={`/blog/${article.id}`}
+                className="bg-[#f2e8dc] border border-[#0a1d35]/10 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col text-center group"
+              >
+                {article.image && (
+                  <motion.img
+                    whileHover={{ scale: 1.03 }}
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-48 object-cover rounded-xl mb-4 border border-[#a9c5dc]/30 transition-transform duration-300"
+                  />
+                )}
+                <h2 className="text-2xl font-semibold mb-2 group-hover:text-[#0a1d35]/80 transition">
+                  {article.title}
+                </h2>
+                <p className="text-sm text-[#0a1d35]/70 mb-4">
+                  Par <span className="font-medium">{article.author}</span> – {article.date}
+                </p>
+                <div
+                  className="text-base leading-relaxed text-[#0a1d35]/90 line-clamp-4"
+                  dangerouslySetInnerHTML={{ __html: article.content }}
+                />
+                <motion.p
+                  className="text-[#0a1d35]/60 mt-2 font-medium"
+                  whileHover={{ x: 4 }}
+                >
+                  → Lire la suite
+                </motion.p>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Formulaire animé */}
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="bg-[#f2e8dc] border border-[#0a1d35]/20 rounded-2xl shadow-md p-8 max-w-3xl mx-auto hover:shadow-xl transition-all"
+        >
+          <motion.h2
+            className="text-2xl font-semibold mb-6 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+             Rédiger un nouvel article
+          </motion.h2>
+
+          <div className="space-y-4">
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Titre de l’article"
+              required
+              className="w-full border border-[#0a1d35]/30 rounded-lg px-4 py-3 bg-[#d9c9b4]/30 focus:outline-none focus:ring-2 focus:ring-[#0a1d35] transition"
+            />
+            <ReactQuill
+              theme="snow"
+              value={form.content}
+              onChange={(val) => setForm((f) => ({ ...f, content: val }))}
+              placeholder="Rédigez votre article (texte formaté, images, etc.)"
+              className="bg-[#f2e8dc] rounded-lg border border-[#0a1d35]/30 transition-all hover:border-[#0a1d35]/60"
+              modules={{
+                toolbar: [
+                  [{ header: [1, 2, 3, false] }],
+                  ["bold", "italic", "underline", "strike"],
+                  [{ list: "ordered" }, { list: "bullet" }],
+                  ["link", "image"],
+                  ["clean"],
+                ],
+              }}
+            />
+            <motion.input
+              whileFocus={{ scale: 1.02 }}
+              name="author"
+              value={form.author}
+              onChange={handleChange}
+              placeholder="Auteur"
+              required
+              className="w-full border border-[#0a1d35]/30 rounded-lg px-4 py-3 bg-[#d9c9b4]/30 focus:outline-none focus:ring-2 focus:ring-[#0a1d35] transition"
+            />
+            <div>
+              <label className="block mb-1 font-medium text-[#0a1d35]">
+                Image de couverture :
+              </label>
+              <input type="file" accept="image/*" onChange={handleImage} />
+              {imagePreview && (
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  src={imagePreview}
+                  alt="Aperçu"
+                  className="w-40 h-40 object-cover rounded-lg mt-3 border border-[#0a1d35]/20 shadow"
+                />
+              )}
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              type="submit"
+              className="px-6 py-3 rounded-full border border-[#0a1d35] text-[#0a1d35] font-medium hover:bg-[#0a1d35] hover:text-[#f2e8dc] transition-all duration-300"
+            >
+              Publier l’article
+            </motion.button>
+          </div>
+        </motion.form>
       </section>
     </main>
   );
