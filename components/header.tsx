@@ -32,6 +32,11 @@ export default function Header() {
             </Link>
           </li>
           <li>
+            <Link href="/apropos" className="hover:text-[var(--color-bg-light)] transition">
+              A propos
+            </Link>
+          </li>
+          <li>
             <Link href="/contact" className="hover:text-[var(--color-bg-light)] transition">
               Contact
             </Link>
