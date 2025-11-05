@@ -1,83 +1,52 @@
-'use client';
+"use client";
 
-import ContactForm from '@/components/ContactForm';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import React from "react";
 
-function ContactContent() {
-    const searchParams = useSearchParams();
-    const type = searchParams.get('type') as 'entreprise' | 'particulier' || 'entreprise';
+export default function ReservationPage() {
+  return (
+    <div className="min-h-screen flex flex-col bg-[#D9C9B4]">
+      <main className="flex-grow flex flex-col items-center justify-center p-8 space-y-10">
+        <h1 className="text-3xl font-bold text-gray-800 text-center">
+          Réservation
+        </h1>
 
-    return (
-        <div className="min-h-screen bg-ivoire">
-            {/* Header */}
-            <header className="bg-bleu-profond text-ivoire py-16 px-8">
-                <div className="max-w-7xl mx-auto">
-                    <h1 className="text-5xl font-montserrat font-bold mb-4">
-                        Contactez-nous
-                    </h1>
-                    <p className="text-xl font-poppins text-ivoire/90">
-                        Nous sommes là pour répondre à vos questions
-                    </p>
-                </div>
-            </header>
-
-            <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                {/* Introduction */}
-                <section className="mb-12 text-center">
-                    <h2 className="text-3xl font-montserrat font-bold text-bleu-profond mb-4">
-                        {type === 'entreprise' ? 'Demande de devis entreprise' : 'Inscription groupe particulier'}
-                    </h2>
-                    <p className="text-lg font-poppins text-bleu-profond/80">
-                        Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais
-                    </p>
-                </section>
-
-                {/* Formulaire */}
-                <ContactForm type={type} />
-
-                {/* Informations de contact */}
-                <section className="mt-16 grid md:grid-cols-2 gap-8">
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <h3 className="text-2xl font-montserrat font-bold text-bleu-profond mb-4">
-                            Par téléphone
-                        </h3>
-                        <p className="font-poppins text-bleu-profond/80 mb-4">
-                            Appelez-nous pour un premier échange
-                        </p>
-                        <a
-                            href="tel:+33XXXXXXXXX"
-                            className="inline-block bg-bleu-clair hover:bg-bleu-clair/90 text-bleu-profond font-montserrat font-semibold py-3 px-6 rounded-lg transition-colors"
-                        >
-                            +33 X XX XX XX XX
-                        </a>
-                    </div>
-
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <h3 className="text-2xl font-montserrat font-bold text-bleu-profond mb-4">
-                            Par email
-                        </h3>
-                        <p className="font-poppins text-bleu-profond/80 mb-4">
-                            Envoyez-nous un message directement
-                        </p>
-                        <a
-                            href="mailto:contact@synego.fr"
-                            className="inline-block bg-champagne hover:bg-champagne/90 text-bleu-profond font-montserrat font-semibold py-3 px-6 rounded-lg transition-colors"
-                        >
-                            contact@synego.fr
-                        </a>
-                    </div>
-                </section>
-            </main>
-
+       
+        <div
+          className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex justify-center"
+          style={{ backgroundColor: "#f1f4f8" }}
+        >
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FParis&showPrint=0&mode=WEEK&showTabs=0&showTz=0&title&src=cmVuZGV6dm91cy5zeW5lZ29AZ21haWwuY29t&color=%23039be5"
+            style={{ borderWidth: 0 }}
+            width="800"
+            height="600"
+            frameBorder="0"
+            scrolling="no"
+          ></iframe>
         </div>
-    );
-}
 
-export default function ContactPage() {
-    return (
-        <Suspense fallback={<div>Chargement...</div>}>
-            <ContactContent />
-        </Suspense>
-    );
+        
+        <div
+          className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex flex-col items-center space-y-4 p-6"
+          style={{ backgroundColor: "#f1f4f8" }}
+        >
+          <h2 className="text-2xl font-semibold text-gray-800 text-center">
+            Localisation du cabinet
+          </h2>
+          <p className="text-gray-700 text-center">
+            10 Allée des Champs Élysées, 91042 Évry-Courcouronnes
+          </p>
+          <iframe
+            src="https://www.google.com/maps?q=10+Allée+des+Champs+Élysées,+91042+Évry-Courcouronnes&output=embed"
+            width="800"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </main>
+    </div>
+  );
 }
