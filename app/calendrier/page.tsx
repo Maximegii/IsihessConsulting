@@ -10,13 +10,12 @@ export default function ReservationPage() {
           Réservation
         </h1>
 
-       
         <div
           className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex justify-center"
           style={{ backgroundColor: "#f1f4f8" }}
         >
           <iframe
-            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FParis&showPrint=0&mode=WEEK&showTabs=0&showTz=0&title&src=cmVuZGV6dm91cy5zeW5lZ29AZ21haWwuY29t&color=%23039be5"
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&showPrint=0&mode=WEEK&showTabs=0&src=cmVuZGV6dm91cy5zeW5lZ29AZ21haWwuY29t&color=%23039be5"
             style={{ borderWidth: 0 }}
             width="800"
             height="600"
@@ -25,7 +24,6 @@ export default function ReservationPage() {
           ></iframe>
         </div>
 
-        
         <div
           className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex flex-col items-center space-y-4 p-6"
           style={{ backgroundColor: "#f1f4f8" }}
