@@ -1,94 +1,87 @@
-'use client';
+"use client";
 
-import ContactFormGeneral from '@/components/ContactFormGeneral';
+import React from "react";
+import { Montserrat, Poppins } from "next/font/google";
+
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700"], 
+  variable: "--font-montserrat",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400"], 
+  variable: "--font-poppins",
+});
+
 
 export default function ContactPage() {
-    return (
-        <div className="min-h-screen bg-ivoire">
-            {/* Header */}
-            <header className="bg-bleu-profond text-ivoire py-16 px-8">
-                <div className="max-w-7xl mx-auto">
-                    <h1 className="text-5xl font-montserrat font-bold mb-4">
-                        Contactez-nous
-                    </h1>
-                    <p className="text-xl font-poppins text-ivoire/90">
-                        Nous sommes là pour répondre à vos questions
-                    </p>
-                </div>
-            </header>
+  return (
+    <div className="min-h-screen flex flex-col bg-[#D9C9B4]">
+          
+      <main className="flex-grow flex flex-col items-center justify-center p-8 space-y-10">
+     
+        <h1
+          className="text-4xl text-gray-800 text-center tracking-wide"
+          style={{
+            fontFamily: "var(--font-montserrat)",
+            fontWeight: 700,
+          }}
+        >
+          Contact
+        </h1>
 
-            <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                {/* Introduction */}
-                <section className="mb-12 text-center">
-                    <h2 className="text-3xl font-montserrat font-bold text-bleu-profond mb-4">
-                        Une question ? Parlons-en !
-                    </h2>
-                    <p className="text-lg font-poppins text-bleu-profond/80">
-                        N'hésitez pas à nous contacter pour toute question ou demande d'information
-                    </p>
-                </section>
 
-                {/* Formulaire de contact général */}
-                <ContactFormGeneral />
-
-                {/* Informations de contact */}
-                <section className="mt-16 grid md:grid-cols-2 gap-8">
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <h3 className="text-2xl font-montserrat font-bold text-bleu-profond mb-4">
-                            Par téléphone
-                        </h3>
-                        <p className="font-poppins text-bleu-profond/80 mb-4">
-                            Appelez-nous pour un premier échange
-                        </p>
-                        <a
-                            href="tel:+33XXXXXXXXX"
-                            className="inline-block bg-bleu-clair hover:bg-bleu-clair/90 text-bleu-profond font-montserrat font-semibold py-3 px-6 rounded-lg transition-colors"
-                        >
-                            +33 X XX XX XX XX
-                        </a>
-                    </div>
-
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <h3 className="text-2xl font-montserrat font-bold text-bleu-profond mb-4">
-                            Par email
-                        </h3>
-                        <p className="font-poppins text-bleu-profond/80 mb-4">
-                            Envoyez-nous un message directement
-                        </p>
-                        <a
-                            href="mailto:contact@synego.fr"
-                            className="inline-block bg-champagne hover:bg-champagne/90 text-bleu-profond font-montserrat font-semibold py-3 px-6 rounded-lg transition-colors"
-                        >
-                            contact@synego.fr
-                        </a>
-                    </div>
-                </section>
-
-                {/* Accès rapide aux services */}
-                <section className="mt-16 bg-bleu-profond text-ivoire rounded-lg p-8">
-                    <h3 className="text-2xl font-montserrat font-bold mb-4 text-center">
-                        Vous souhaitez réserver une prestation ?
-                    </h3>
-                    <p className="font-poppins text-center mb-6">
-                        Découvrez nos différentes formules d'accompagnement
-                    </p>
-                    <div className="flex justify-center">
-                        <a
-                            href="/services"
-                            className="bg-bleu-clair hover:bg-bleu-clair/90 text-bleu-profond font-montserrat font-semibold py-3 px-8 rounded-lg transition-colors"
-                        >
-                            Voir nos services
-                        </a>
-                    </div>
-                </section>
-            </main>
-
-            {/* Footer */}
-            <footer className="bg-bleu-profond text-ivoire py-8 mt-16">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <p className="font-poppins">© 2025 Isihess Consulting - Synego. Tous droits réservés.</p>
-                </div>
-            </footer>
+       <div className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex flex-col items-center space-y-4 p-6"
+          style={{ backgroundColor: "#f1f4f8" }}>
+           <h2
+            className="text-2xl text-gray-800 text-center"
+            style={{
+              fontFamily: "var(--font-montserrat)",
+              fontWeight: 600,
+            }}
+          >
+            Horaire d’ouverture
+          </h2>
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&showPrint=0&mode=WEEK&showTabs=0&src=cmVuZGV6dm91cy5zeW5lZ29AZ21haWwuY29t&color=%23039be5"
+            style={{ borderWidth: 0 }}
+            width="800"
+            height="600"
+            frameBorder="0"
+            scrolling="no"
+          ></iframe>
         </div>
-    );
+
+        <div
+          className="w-full max-w-4xl rounded-2xl shadow-lg overflow-hidden flex flex-col items-center space-y-4 p-6"
+          style={{ backgroundColor: "#f1f4f8" }}
+        >
+         <h2
+            className="text-2xl text-gray-800 text-center"
+            style={{
+              fontFamily: "var(--font-montserrat)",
+              fontWeight: 600,
+            }}
+          >
+            Localisation du cabinet
+          </h2>
+          <p className="text-gray-700 text-center">
+            10 Allée des Champs Élysées, 91042 Évry-Courcouronnes
+          </p>
+          <iframe
+            src="https://www.google.com/maps?q=10+Allée+des+Champs+Élysées,+91042+Évry-Courcouronnes&output=embed"
+            width="800"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </main>
+    </div>
+  );
 }
