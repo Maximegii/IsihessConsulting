@@ -4,13 +4,16 @@ import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 interface ContactFormProps {
-  type: 'entreprise' | 'particulier' | 'individuel';
+  type: 'entreprise' | 'groupe' | 'individuel';
 }
 
 export default function ContactForm({ type }: ContactFormProps) {
   const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
+    genre: '',
+    dateNaissance: '',
+    personneContact: '',
     entreprise: '',
     localisation: '',
     tailleGroupe: '',
@@ -33,6 +36,9 @@ export default function ContactForm({ type }: ContactFormProps) {
           type: type,
           nom: formData.nom,
           prenom: formData.prenom,
+          genre: formData.genre,
+          dateNaissance: formData.dateNaissance,
+          personneContact: formData.personneContact,
           entreprise: formData.entreprise,
           localisation: formData.localisation,
           tailleGroupe: formData.tailleGroupe,
@@ -50,6 +56,9 @@ export default function ContactForm({ type }: ContactFormProps) {
       setFormData({
         nom: '',
         prenom: '',
+        genre: '',
+        dateNaissance: '',
+        personneContact: '',
         entreprise: '',
         localisation: '',
         tailleGroupe: '',
@@ -66,7 +75,7 @@ export default function ContactForm({ type }: ContactFormProps) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -77,7 +86,7 @@ export default function ContactForm({ type }: ContactFormProps) {
     switch (type) {
       case 'entreprise':
         return 'Demande de devis entreprise';
-      case 'particulier':
+      case 'groupe':
         return 'Inscription groupe';
       case 'individuel':
         return 'Demande de rendez-vous - Sessions individuelles';
@@ -94,56 +103,38 @@ export default function ContactForm({ type }: ContactFormProps) {
 
 
 
-      {/* Nom et Prénom pour tous les types */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label className="block font-poppins font-medium text-bleu-profond mb-2">
-            Nom *
-          </label>
-          <input
-            type="text"
-            name="nom"
-            value={formData.nom}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
-          />
-        </div>
-
-        <div>
-          <label className="block font-poppins font-medium text-bleu-profond mb-2">
-            Prénom *
-          </label>
-          <input
-            type="text"
-            name="prenom"
-            value={formData.prenom}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
-          />
-        </div>
-      </div>
-
-      {/* Nom d'entreprise uniquement pour type entreprise */}
-      {type === 'entreprise' && (
-        <div>
-          <label className="block font-poppins font-medium text-bleu-profond mb-2">
-            Nom de l'entreprise *
-          </label>
-          <input
-            type="text"
-            name="entreprise"
-            value={formData.entreprise}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
-          />
-        </div>
-      )}
-
-      {type === 'entreprise' && (
+      {/* FORMULAIRE ENTREPRISE */}
+      {type === 'entreprise' ? (
         <>
+          <div>
+            <label className="block font-poppins font-medium text-bleu-profond mb-2">
+              Personne à contacter *
+            </label>
+            <input
+              type="text"
+              name="personneContact"
+              value={formData.personneContact}
+              onChange={handleChange}
+              required
+              placeholder="Nom et prénom de la personne à contacter"
+              className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+            />
+          </div>
+
+          <div>
+            <label className="block font-poppins font-medium text-bleu-profond mb-2">
+              Nom de l'entreprise *
+            </label>
+            <input
+              type="text"
+              name="entreprise"
+              value={formData.entreprise}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+            />
+          </div>
+
           <div>
             <label className="block font-poppins font-medium text-bleu-profond mb-2">
               Localisation *
@@ -172,9 +163,80 @@ export default function ContactForm({ type }: ContactFormProps) {
             />
           </div>
         </>
+      ) : (
+        /* FORMULAIRE INDIVIDUEL ET GROUPE */
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-poppins font-medium text-bleu-profond mb-2">
+              Nom *
+            </label>
+            <input
+              type="text"
+              name="nom"
+              value={formData.nom}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+            />
+          </div>
+
+          <div>
+            <label className="block font-poppins font-medium text-bleu-profond mb-2">
+              Prénom *
+            </label>
+            <input
+              type="text"
+              name="prenom"
+              value={formData.prenom}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+            />
+          </div>
+        </div>
       )}
 
-      {type === 'particulier' && (
+      {/* Champs spécifiques INDIVIDUEL */}
+      {type === 'individuel' && (
+        <>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block font-poppins font-medium text-bleu-profond mb-2">
+                Genre *
+              </label>
+              <select
+                name="genre"
+                value={formData.genre}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+              >
+                <option value="">Sélectionnez</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block font-poppins font-medium text-bleu-profond mb-2">
+                Date de naissance *
+              </label>
+              <input
+                type="date"
+                name="dateNaissance"
+                value={formData.dateNaissance}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 border border-champagne rounded-lg focus:outline-none focus:ring-2 focus:ring-bleu-clair font-poppins"
+              />
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Nombre de personnes pour GROUPE */}
+      {type === 'groupe' && (
         <div>
           <label className="block font-poppins font-medium text-bleu-profond mb-2">
             Nombre de personnes *
@@ -196,6 +258,7 @@ export default function ContactForm({ type }: ContactFormProps) {
         </div>
       )}
 
+      {/* Email et Téléphone pour TOUS */}
       <div>
         <label className="block font-poppins font-medium text-bleu-profond mb-2">
           Email *
@@ -224,6 +287,7 @@ export default function ContactForm({ type }: ContactFormProps) {
         />
       </div>
 
+      {/* Objectifs pour TOUS */}
       <div>
         <label className="block font-poppins font-medium text-bleu-profond mb-2">
           Vos objectifs (optionnel)
@@ -247,4 +311,4 @@ export default function ContactForm({ type }: ContactFormProps) {
       </button>
     </form>
   );
-} 
+}
