@@ -1,6 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { use, useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+
+
 
 type Article = {
   id: number;
@@ -11,9 +14,23 @@ type Article = {
   image: string;
 };
 
+
+
 export default function ArticlePage() {
+  const router = useRouter();
   const { id } = useParams();
   const [article, setArticle] = useState<Article | null>(null);
+
+  async function handleDelete(id: number): Promise<void> {
+    const ok = window.confirm("Voulez-vous vraiment supprimer cet article ?");
+    if (!ok) return;
+    await fetch('/api/blog', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    });
+    router.push('/blog');
+    }
 
   useEffect(() => {
     fetch("/api/blog")
@@ -45,6 +62,25 @@ export default function ArticlePage() {
           className="prose max-w-none text-[#0A1D35] prose-img:rounded-lg prose-img:shadow-sm"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+        <motion.form
+                  onSubmit={(e) => { e.preventDefault(); handleDelete(article.id); }}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+  
+                >
+        <div className="flex justify-center mt-8">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              type="submit"
+              className="px-6 py-3 rounded-full border border-[#0a1d35] text-[#0a1d35] font-medium hover:bg-[#0a1d35] hover:text-[#f2e8dc] transition-all duration-300"
+            >
+              Supprimer l'article
+            </motion.button> 
+          </div>
+          </motion.form>
       </article>
     </main>
   );

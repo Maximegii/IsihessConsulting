@@ -67,23 +67,6 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[#d9c9b4] text-[#0a1d35] font-[var(--font-outfit)] overflow-hidden">
-      {/* Header animé */}
-      <motion.header
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="sticky top-0 z-20 bg-[#0a1d35] text-[#f2e8dc] py-6 shadow-md text-center"
-      >
-        <motion.h1
-          className="text-3xl font-bold tracking-tight"
-          whileHover={{ scale: 1.02 }}
-        >
-          Synego
-        </motion.h1>
-        <p className="text-[#a9c5dc] mt-1">
-          Chez Synego, révélez votre potentiel, cultivez votre bien-être.
-        </p>
-      </motion.header>
 
       {/* Liste des articles */}
       <section className="max-w-6xl mx-auto px-6 py-12 space-y-16">
