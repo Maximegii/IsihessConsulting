@@ -105,12 +105,3 @@ body {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-text);
 }
-
-@utility font-poppins {
-  font-family: var(--font-poppins), sans-serif;
-}
-
-body {
-  color: var(--color-bleu-profond);
-  background: var(--color-ivoire);
-}

@@ -153,7 +153,7 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            ✍️ Rédiger un nouvel article
+             Rédiger un nouvel article
           </motion.h2>
 
           <div className="space-y-4">
