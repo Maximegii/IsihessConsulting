@@ -1,13 +1,8 @@
 'use client';
 
-import ContactForm from '@/components/ContactForm';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import ContactFormGeneral from '@/components/ContactFormGeneral';
 
-function ContactContent() {
-    const searchParams = useSearchParams();
-    const type = searchParams.get('type') as 'entreprise' | 'particulier' || 'entreprise';
-
+export default function ContactPage() {
     return (
         <div className="min-h-screen bg-ivoire">
             {/* Header */}
@@ -26,15 +21,15 @@ function ContactContent() {
                 {/* Introduction */}
                 <section className="mb-12 text-center">
                     <h2 className="text-3xl font-montserrat font-bold text-bleu-profond mb-4">
-                        {type === 'entreprise' ? 'Demande de devis entreprise' : 'Inscription groupe particulier'}
+                        Une question ? Parlons-en !
                     </h2>
                     <p className="text-lg font-poppins text-bleu-profond/80">
-                        Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais
+                        N'hésitez pas à nous contacter pour toute question ou demande d'information
                     </p>
                 </section>
 
-                {/* Formulaire */}
-                <ContactForm type={type} />
+                {/* Formulaire de contact général */}
+                <ContactFormGeneral />
 
                 {/* Informations de contact */}
                 <section className="mt-16 grid md:grid-cols-2 gap-8">
@@ -68,16 +63,32 @@ function ContactContent() {
                         </a>
                     </div>
                 </section>
+
+                {/* Accès rapide aux services */}
+                <section className="mt-16 bg-bleu-profond text-ivoire rounded-lg p-8">
+                    <h3 className="text-2xl font-montserrat font-bold mb-4 text-center">
+                        Vous souhaitez réserver une prestation ?
+                    </h3>
+                    <p className="font-poppins text-center mb-6">
+                        Découvrez nos différentes formules d'accompagnement
+                    </p>
+                    <div className="flex justify-center">
+                        <a
+                            href="/services"
+                            className="bg-bleu-clair hover:bg-bleu-clair/90 text-bleu-profond font-montserrat font-semibold py-3 px-8 rounded-lg transition-colors"
+                        >
+                            Voir nos services
+                        </a>
+                    </div>
+                </section>
             </main>
 
+            {/* Footer */}
+            <footer className="bg-bleu-profond text-ivoire py-8 mt-16">
+                <div className="max-w-7xl mx-auto px-4 text-center">
+                    <p className="font-poppins">© 2025 Isihess Consulting - Synego. Tous droits réservés.</p>
+                </div>
+            </footer>
         </div>
-    );
-}
-
-export default function ContactPage() {
-    return (
-        <Suspense fallback={<div>Chargement...</div>}>
-            <ContactContent />
-        </Suspense>
     );
 }
