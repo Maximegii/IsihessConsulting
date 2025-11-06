@@ -10,7 +10,7 @@ export default function EmailForm() {
 
     // Initialiser EmailJS
     useEffect(() => {
-        emailjs.init('SI8GmUSlyS4lk5ngX');
+        emailjs.init('CvTcHwiU7WR5gT2Gh');
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -20,8 +20,8 @@ export default function EmailForm() {
         try {
             // Envoyer l'email 
             await emailjs.send(
-                'service_ou886tg',
-                'template_l4x4k4m',
+                'service_jzwwehs',
+                ' template_eesuo66',
                 {
                     client_nom: nom,
                     client_email: email,

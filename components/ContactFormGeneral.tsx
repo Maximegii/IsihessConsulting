@@ -27,7 +27,7 @@ export default function ContactFormGeneral() {
 
     try {
       const result = await emailjs.send(
-        'service_ou886tg',
+        'service_jzwwehs',
         'template_l4x4k4m',
         {
           nom: formData.nom,
