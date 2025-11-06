@@ -64,6 +64,17 @@ export default function Header() {
           </li>
           <li>
             <Link
+              href="/ressources"
+              className={
+                (pathname.startsWith("/ressources") ? "text-white " : "") +
+                "hover:text-[var(--color-bg-light)] transition"
+              }
+            >
+              Ressources
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/contact"
               className={
                 (pathname.startsWith("/contact") ? "text-white " : "") +
