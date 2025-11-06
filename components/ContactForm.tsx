@@ -31,7 +31,7 @@ export default function ContactForm({ type }: ContactFormProps) {
     try {
       await emailjs.send(
         'service_ou886tg',
-        'template_7seujyd',
+        'template_5ch2bev',
         {
           type: type,
           nom: formData.nom,
@@ -47,7 +47,7 @@ export default function ContactForm({ type }: ContactFormProps) {
           telephone: formData.telephone,
           objectifs: formData.objectifs,
         },
-        'SI8GmUSlyS4lk5ngX'
+        'CvTcHwiU7WR5gT2Gh'
       );
 
       alert('✅ Message envoyé avec succès ! Nous vous contacterons bientôt.');
