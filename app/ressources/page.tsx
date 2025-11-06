@@ -1,6 +1,6 @@
 export const metadata = {
     title: "Ressources | Synego",
-    description: "Retrouvez nos actualités, inspirations et conseils sur Instagram pour le bien-être et le développement personnel.",
+    description: "Inscrivez-vous avec votre email pour recevoir notre e-book gratuit.",
     keywords: [
         "Thérapies et Pratiques", "Thérapies alternatives", "Médecines douces", "Médecines complémentaires", "Acupuncture", "Ventouses", "Cupping thérapie", "Shiatsu", "Tuina", "Hypnothérapie", "Sophrologie", "EFT", "Dialogue intérieur", "Dialogue pédagogique", "Sciences de la Personnalité", "MBTI", "Ennéagramme", "Process Communication", "Archétypes", "Développement Personnel", "Coaching", "Thérapie", "Mindset", "Transformation", "Potentiel", "Confiance en soi", "Croissance personnelle", "Bien-être", "Bien-être global", "Approche holistique", "Synergie", "Harmonie", "Équilibre", "Adaptation", "Capacité d'adaptation", "Gestion d'apprentissage", "Stress", "Douleurs chroniques", "Blocages émotionnels", "Croyances limitantes", "Solitude émotionnelle", "Tensions musculaires", "Fatigue chronique", "Insomnies", "Anxiété", "Soulagement", "Relaxation", "Connaissance de soi", "Relations authentiques", "Gestion de la douleur", "Révélation du potentiel", "Synego", "Ultimate Melik"
     ]
@@ -22,7 +22,7 @@ export default function Home() {
                 {/* Section Title */}
                 <div className="mb-8">
                     <h2 className="text-3xl font-montserrat font-bold text-bleu-profond mb-4">
-                        Récupérez 
+                        Inscrivez-vous avec votre email pour recevoir notre e-book gratuit
                     </h2>
                 </div>
 

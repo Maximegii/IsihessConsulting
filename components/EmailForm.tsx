@@ -20,9 +20,18 @@ export default function EmailForm() {
             });
 
             if (response.ok) {
-                console.log(response)
                 setStatus('success');
                 setEmail('');
+                
+                // PDF download
+                const pdfUrl = '/livre_blanc.pdf'; 
+                const link = document.createElement('a');
+                link.className = 'hidden';
+                link.href = pdfUrl;
+                link.download = 'Livre Blanc.pdf';
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
             } else {
                 setStatus('error');
             }
